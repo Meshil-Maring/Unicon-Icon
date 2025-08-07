@@ -1,11 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+
 require("dotenv").config();
 
 const app = express();
 const PORT = 5500;
 
 app.use(express.json());
+
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -15,9 +19,12 @@ mongoose
     process.exit(1);
   });
 
-app.use("/test/students", (req, res, next) => {
-  console.log(res.query);
-  res.send(req.body);
+app.post("/home", (req, res) => {
+  const { name, age } = req.body;
+
+  console.log("Name: ", name, "Age: ", age);
+
+  res.status(201).json({ message: "Recive data successfully" });
 });
 
 app.use("/", (req, res) => {
