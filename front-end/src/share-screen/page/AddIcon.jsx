@@ -20,7 +20,7 @@ const AddIcon = () => {
 
     const data = await response.json();
 
-    alert(data);
+    console.log(data.name, data.age);
 
     console.log(name, age);
     navigate("/home");
