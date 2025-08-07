@@ -1,3 +1,7 @@
-const HomePage = () => <div className="text-2xl"></div>;
+const HomePage = () => (
+  <div>
+    <p>Home Page</p>
+  </div>
+);
 
 export default HomePage;
