@@ -1,14 +1,22 @@
-// index.js
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
+const PORT = 5500;
 
-const PORT = 3000;
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("Database is connected"))
+  .catch((err) => {
+    console.error("Database connection error:", err);
+    process.exit(1);
+  });
 
-app.get("/", (req, res) => {
-  res.send("Hello, Express!");
+app.use("/", (req, res) => {
+  res.send("Hello how are you");
 });
 
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
