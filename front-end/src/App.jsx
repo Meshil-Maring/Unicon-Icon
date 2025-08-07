@@ -1,10 +1,10 @@
 import "./App.css";
-import AddIcon from "./share-screen/page/AddIcon";
+import MainRoutes from "./routes/MainRoutes";
 
 function App() {
   return (
     <>
-      <AddIcon />
+      <MainRoutes />
     </>
   );
 }

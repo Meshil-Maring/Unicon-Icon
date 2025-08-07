@@ -1,26 +1,26 @@
-const AddIcon = () => (
-  <form method="POST" action={"/home"} className="bg-blue-950">
-    <label>Name</label>
-    <input
-      className="block"
-      name="name"
-      type="text"
-      placeholder="write your name here"
-    ></input>
+import { useNavigate } from "react-router-dom";
 
-    <label>Age</label>
+const AddIcon = () => {
+  const navigate = useNavigate();
 
-    <input
-      className="block"
-      name="age"
-      type="text"
-      placeholder="write your age here"
-    ></input>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    <button type="submit" className="mt-28">
-      Submit
-    </button>
-  </form>
-);
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const age = formData.get("age");
+
+    console.log(name, age);
+    navigate("/home");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="name" type="text" placeholder="name" />
+      <input name="age" type="number" placeholder="age" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
 
 export default AddIcon;
