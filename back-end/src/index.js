@@ -27,6 +27,16 @@ app.post("/home", (req, res) => {
     .catch((err) => console.log("error: ", err));
 });
 
+app.get("/", async (req, res, next) => {
+  try {
+    const fetchData = await AddIcon.find();
+
+    res.json(fetchData);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 if (!process.env.MONGO_URI) {
   console.error("❌ MONGO_URI is not defined in .env");
   process.exit(1);

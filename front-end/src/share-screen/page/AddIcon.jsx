@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const AddIcon = () => {
+  const [svgData, setSvgData] = useState("s");
   const navigate = useNavigate();
 
+  // Handler for submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,6 +30,21 @@ const AddIcon = () => {
     navigate("/");
   };
 
+  // svg render
+  function SvgRenderer(svgString) {
+    return <div dangerouslySetInnerHTML={{ __html: svgString }} />;
+  }
+
+  useEffect(() => {
+    fetch("http://localhost:5500")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setSvgData(data);
+      })
+      .catch("Error fetch the icons");
+  }, []);
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -42,6 +60,8 @@ const AddIcon = () => {
         className="border rounded w-full"
         required
       />
+
+      {SvgRenderer(svgData[2].data)}
 
       <label className="mr-2 block mt-8 relative">SVG Format</label>
       <aside className="w-full relative">
