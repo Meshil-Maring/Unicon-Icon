@@ -5,7 +5,7 @@ import AddIcon from "../share-screen/page/AddIcon";
 const MainRoutes = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/add-icon" element={<AddIcon />} />
     </Routes>
   </BrowserRouter>

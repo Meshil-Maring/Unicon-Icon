@@ -23,6 +23,8 @@ const AddIcon = () => {
     } catch (err) {
       console.log("Something when wrong, ", err);
     }
+
+    navigate("/");
   };
 
   return (

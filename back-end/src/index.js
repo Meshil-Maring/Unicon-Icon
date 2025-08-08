@@ -18,7 +18,7 @@ app.post("/home", (req, res) => {
 
   const icon = new AddIcon({
     name: data.name,
-    svg: data.svgText,
+    data: data.svgText,
   });
 
   icon
