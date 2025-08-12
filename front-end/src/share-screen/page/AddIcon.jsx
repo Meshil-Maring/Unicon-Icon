@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const AddIcon = () => {
-  const [svgData, setSvgData] = useState("s");
+  const [svgData, setSvgData] = useState([]); // start as array so indexing won't crash
   const navigate = useNavigate();
 
   // Handler for submit form
@@ -10,24 +10,27 @@ const AddIcon = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-
     const data = {};
 
-    formData.forEach((value, index) => {
-      data[index] = value;
+    formData.forEach((value, key) => {
+      data[key] = value;
     });
 
     try {
-      await fetch("http://localhost:5500/home", {
+      const res = await fetch("http://localhost:5500/home", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-    } catch (err) {
-      console.log("Something when wrong, ", err);
-    }
 
-    navigate("/");
+      if (res.ok) {
+        navigate("/");
+      } else {
+        console.error("Failed to save icon:", res.statusText);
+      }
+    } catch (err) {
+      console.error("Something went wrong:", err);
+    }
   };
 
   // svg render
@@ -39,10 +42,10 @@ const AddIcon = () => {
     fetch("http://localhost:5500")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("Fetched icons:", data);
         setSvgData(data);
       })
-      .catch("Error fetch the icons");
+      .catch((err) => console.error("Error fetching the icons:", err));
   }, []);
 
   return (
@@ -61,7 +64,8 @@ const AddIcon = () => {
         required
       />
 
-      {SvgRenderer(svgData[2].data)}
+      {/* Render the SVG only if it exists */}
+      {svgData.length > 2 && svgData[2]?.data && SvgRenderer(svgData[2].data)}
 
       <label className="mr-2 block mt-8 relative">SVG Format</label>
       <aside className="w-full relative">
