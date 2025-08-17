@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
+import Home from "../pages/home";
 
 const MainRoutes = () => (
   <Routes>
-    <Route path="/" element={<p>hello</p>}></Route>
+    <Route path="/" element={<Home />}></Route>
   </Routes>
 );
 

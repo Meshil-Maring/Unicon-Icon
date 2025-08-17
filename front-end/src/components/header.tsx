@@ -2,7 +2,7 @@ const Header = () => (
   <header>
     <p>Icon</p>
 
-    <p>Left</p>
+    <p>Something</p>
   </header>
 );
 
