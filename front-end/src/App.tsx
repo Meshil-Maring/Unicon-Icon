@@ -1,9 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainRoutes from "../routes/MainRoutes";
+
 import "./App.css";
 
 function App() {
   return (
     <>
-      <p className="text-2xl">Hello World</p>
+      <BrowserRouter>
+        <MainRoutes />
+      </BrowserRouter>
     </>
   );
 }
