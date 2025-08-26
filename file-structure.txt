@@ -1,0 +1,66 @@
+mern-app/
+│
+├── backend/                     # Backend (Express, MongoDB, Mongoose)
+│   ├── src/
+│   │   ├── config/              # Configuration files (DB, env, etc.)
+│   │   │   └── db.js            # MongoDB connection using Mongoose
+│   │   │
+│   │   ├── models/              # Mongoose models (schemas)
+│   │   │   └── User.js
+│   │   │
+│   │   ├── controllers/         # Functions for route logic
+│   │   │   └── userController.js
+│   │   │
+│   │   ├── routes/              # Express routes
+│   │   │   └── userRoutes.js
+│   │   │
+│   │   ├── middlewares/         # Custom middleware (auth, error handling)
+│   │   │   └── authMiddleware.js
+│   │   │
+│   │   ├── utils/               # Helper functions
+│   │   │   └── generateToken.js
+│   │   │
+│   │   ├── app.js               # Express app setup
+│   │   └── server.js            # Server entry point
+│   │
+│   ├── .env                     # Environment variables
+│   ├── package.json
+│   └── README.md
+│
+├── frontend/                    # Frontend (React + Tailwind)
+│   ├── public/                  # Static assets
+│   │   └── index.html
+│   │
+│   ├── src/
+│   │   ├── assets/              # Images, icons
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Button.jsx
+│   │   │
+│   │   ├── pages/               # Page-level components
+│   │   │   ├── Home.jsx
+│   │   │   └── Login.jsx
+│   │   │
+│   │   ├── hooks/               # Custom React hooks
+│   │   │   └── useAuth.js
+│   │   │
+│   │   ├── context/             # React context (auth, theme, etc.)
+│   │   │   └── AuthContext.jsx
+│   │   │
+│   │   ├── services/            # API calls (fetch/axios)
+│   │   │   └── api.js
+│   │   │
+│   │   ├── styles/              # Global styles (Tailwind)
+│   │   │   └── index.css
+│   │   │
+│   │   ├── App.jsx              # Main App
+│   │   ├── main.jsx             # React entry (Vite/CRA)
+│   │   └── router.jsx           # React Router setup
+│   │
+│   ├── tailwind.config.js       # Tailwind config
+│   ├── postcss.config.js
+│   ├── package.json
+│   └── README.md
+│
+├── .gitignore
+└── README.md

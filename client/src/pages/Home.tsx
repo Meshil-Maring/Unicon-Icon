@@ -1,6 +1,6 @@
-import DisplayIcons from "../src/components/DisplayIcons";
-import Header from "../src/components/Header";
-import ListIcon from "../src/components/ListIcon";
+import DisplayIcons from "../components/DisplayIcons";
+import Header from "../components/Header";
+import ListIcon from "../components/ListIcon";
 
 const Home = () => (
   <div className="">
